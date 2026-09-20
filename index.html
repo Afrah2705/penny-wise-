@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Pennywise | Smart savings companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">P</span><span>Pennywise</span></div>
+      <p class="side-kicker">YOUR MONEY, CLEARER</p>
+      <nav>
+        <button class="nav-item active" data-view="overview"><span>⌂</span> Overview</button>
+        <button class="nav-item" data-view="expenses"><span>↗</span> Expenses</button>
+        <button class="nav-item" data-view="savings"><span>＋</span> Savings</button>
+        <button class="nav-item" data-view="analysis"><span>◌</span> Analysis</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="side-tip"><span class="tip-icon">✦</span><strong>Little steps add up.</strong><p>Save first, spend with intention, and give every rupee a job.</p></div>
+        <button class="settings-btn" id="editSetup">⚙ <span>Edit profile & plan</span></button>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><p class="eyebrow" id="dateLabel">SEPTEMBER 2026</p><h1>Good morning, <span id="userName">there</span> <span class="wave">✦</span></h1></div><div class="top-actions"><span class="save-state">● Saved locally</span><button class="icon-btn" id="resetData" title="Reset all data">↺</button><div class="avatar" id="avatar">U</div></div></header>
+      <section id="overviewView" class="view active-view">
+        <div class="welcome-row"><div><h2>Your money at a glance</h2><p class="muted">A calm view of where you are and what comes next.</p></div><div class="month-pill">● <span id="monthName">This month</span></div></div>
+        <div id="alertBanner" class="alert-banner"></div>
+        <div class="metric-grid">
+          <article class="metric-card income"><div class="metric-icon">₹</div><div><span>Monthly income</span><strong id="incomeValue">₹0</strong><small id="incomeType">Set your income</small></div></article>
+          <article class="metric-card goal"><div class="metric-icon">◎</div><div><span>Savings goal</span><strong id="goalValue">₹0</strong><small id="goalRemaining">Set a goal to begin</small></div></article>
+          <article class="metric-card saved"><div class="metric-icon">↗</div><div><span>Actual savings</span><strong id="savedValue">₹0</strong><small id="savedProgress">0% of goal</small></div></article>
+          <article class="metric-card spend"><div class="metric-icon">↘</div><div><span>Total expenses</span><strong id="expensesValue">₹0</strong><small id="expenseCount">0 transactions</small></div></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel plan-panel"><div class="panel-heading"><div><p class="eyebrow">YOUR MONTHLY PLAN</p><h3>Give every rupee a job</h3></div><button class="text-btn" id="editPlan">Adjust plan →</button></div><div class="plan-total"><div><span>Planned spending</span><strong id="plannedSpend">₹0</strong></div><div class="progress-track"><span id="plannedProgress"></span></div><small id="plannedCaption">Set up your plan to see progress</small></div><div class="plan-list"><div><span class="plan-dot needs"></span><span>Needs</span><strong id="needsBudget">₹0</strong><small id="needsActual">₹0 spent</small></div><div><span class="plan-dot wants"></span><span>Wants</span><strong id="wantsBudget">₹0</strong><small id="wantsActual">₹0 spent</small></div><div><span class="plan-dot other"></span><span>Other</span><strong id="otherBudget">₹0</strong><small id="otherActual">₹0 spent</small></div></div></article>
+          <article class="panel afford-panel"><div class="panel-heading"><div><p class="eyebrow">QUICK CHECK</p><h3>Can I afford this?</h3></div><span class="question-mark">?</span></div><p class="muted">Thinking about a purchase? Let’s look at the bigger picture.</p><div class="afford-inputs"><input id="affordName" placeholder="What are you buying?"/><div class="price-input"><span>₹</span><input id="affordPrice" type="number" min="0" placeholder="Price"/></div></div><button class="primary-btn full" id="checkAfford">Check my plan <span>→</span></button><div id="affordResult" class="afford-result"></div></article>
+        </div>
+        <div class="lower-grid"><article class="panel spend-guide"><div class="panel-heading"><div><p class="eyebrow">SPENDING GUIDE</p><h3>Keep your pace</h3></div><span class="soft-badge">Live</span></div><div class="guide-numbers"><div><span>Safe to spend</span><strong id="safeSpend">₹0</strong></div><div><span>Daily guide</span><strong id="dailySpend">₹0</strong></div><div><span>Weekly guide</span><strong id="weeklySpend">₹0</strong></div></div><p class="guide-note" id="guideNote">Add your income and expenses to get a daily guide.</p></article><article class="panel savings-progress"><div class="panel-heading"><div><p class="eyebrow">SAVINGS MOMENTUM</p><h3>Goal progress</h3></div><span id="goalPercent" class="big-percent">0%</span></div><div class="goal-bar"><span id="goalBar"></span></div><div class="goal-foot"><span>₹0 saved</span><span id="goalFootRight">₹0 to go</span></div><button class="secondary-btn full" data-view="savings">View savings activity →</button></article></div>
+      </section>
+      <section id="expensesView" class="view"><div class="page-heading"><div><p class="eyebrow">MONEY OUT</p><h2>Expense tracker</h2><p class="muted">Keep a simple record of where your money goes.</p></div><button class="primary-btn" id="addExpense">＋ Add expense</button></div><div class="category-summary" id="categorySummary"></div><article class="panel table-panel"><div class="panel-heading"><div><h3>Recent expenses</h3><p class="muted">Your latest spending activity</p></div><select id="categoryFilter"><option value="all">All categories</option><option value="Needs">Needs</option><option value="Wants">Wants</option><option value="Other">Other</option></select></div><div id="expenseList" class="expense-list"></div></article></section>
+      <section id="savingsView" class="view"><div class="page-heading"><div><p class="eyebrow">MONEY SET ASIDE</p><h2>Your savings</h2><p class="muted">Record what you actually put away. Nothing moves between bank accounts.</p></div><div class="button-row"><button class="secondary-btn" id="withdrawSavings">↘ Withdraw</button><button class="primary-btn" id="saveMoney">＋ Save money</button></div></div><div class="savings-hero"><div><p class="eyebrow">CURRENT SAVINGS</p><strong id="savingsHeroValue">₹0</strong><p id="savingsHeroCaption">Every saved amount brings you closer.</p></div><div class="hero-goal"><span id="savingsHeroPercent">0%</span><div class="goal-bar"><span id="savingsHeroBar"></span></div><small id="savingsHeroGoal">₹0 goal</small></div></div><div class="summary-strip"><div><span>Total deposited</span><strong id="depositedTotal">₹0</strong></div><div><span>Total withdrawn</span><strong id="withdrawnTotal">₹0</strong></div><div><span>Goal remaining</span><strong id="savingsRemaining">₹0</strong></div></div><div class="two-column"><article class="panel history-panel"><div class="panel-heading"><div><p class="eyebrow">ACTIVITY</p><h3>Savings history</h3></div></div><div id="savingsHistory" class="history-list"></div></article><article class="panel how-panel"><div class="panel-heading"><div><p class="eyebrow">A SIMPLE ROUTINE</p><h3>How to save</h3></div><span>✦</span></div><ol id="saveSteps"></ol><p class="quote">“Small regular savings can help you reach your goal.”</p></article></div></section>
+      <section id="analysisView" class="view"><div class="page-heading"><div><p class="eyebrow">SEE THE PATTERN</p><h2>Analysis</h2><p class="muted">Compare your plan with what really happened.</p></div></div><div class="analysis-grid"><article class="panel chart-panel"><div class="panel-heading"><div><h3>Where your money goes</h3><p class="muted">Spending by bucket</p></div></div><div class="donut-wrap"><div id="donut" class="donut"><span id="donutTotal">₹0</span><small>expenses</small></div><div id="legend" class="legend"></div></div></article><article class="panel chart-panel"><div class="panel-heading"><div><h3>Plan vs actual</h3><p class="muted">Recommended spending compared with reality</p></div></div><div id="barChart" class="bar-chart"></div></article></div><article class="panel summary-panel"><div class="panel-heading"><div><p class="eyebrow">END-OF-MONTH SNAPSHOT</p><h3>Your monthly summary</h3></div><span class="soft-badge">Updated now</span></div><div id="monthlySummary" class="summary-grid"></div></article></section>
+    </main>
+  </div>
+  <div id="modalRoot"></div>
+  <script src="app.js"></script>
+</body>
+</html>
